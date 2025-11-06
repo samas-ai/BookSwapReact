@@ -15,14 +15,14 @@
   height: 50px;
 }
 
-.login-form {
+.register-form{
   padding: 2rem;
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 80%;
   max-width: 400px;
-  height: 26rem;
+  height: 42rem;
   text-align: center;
 
   position: relative;

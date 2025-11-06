@@ -10,6 +10,21 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+    def get_permissions(self):
+        """
+        Define permissões diferentes por ação.
+        'create' (registo) permite acesso anónimo (AllowAny).
+        Outras ações exigem autenticação.
+        """
+        if self.action == 'create':
+            self.permission_classes = [permissions.AllowAny]
+        else:
+            # Padrão: Apenas utilizadores autenticados podem ver/editar outros utilizadores
+            # (Você pode querer mudar isto para IsAdminUser depois)
+            self.permission_classes = [permissions.IsAuthenticated]
+        
+        return super().get_permissions()
+
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
